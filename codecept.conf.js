@@ -3,10 +3,11 @@ exports.config = {
   helpers: {
     Puppeteer: {
       url: 'http://localhost:5000',
-      show: true
+      show: false
     },
     GraphQL: {
-      endpoint: 'http://localhost:5000/graphql/',
+      endpoint: 'http://localhost:5000/',
+      timeout: 30000,
     }
   },
   include: {
@@ -17,7 +18,7 @@ exports.config = {
   teardown: null,
   hooks: [],
   gherkin: {
-    features: './features/basic.feature',
+    features: './features/*.feature',
     steps: ['./step_definitions/steps.js']
   },
   plugins: {
@@ -26,8 +27,11 @@ exports.config = {
     },
     retryFailedStep: {
       enabled: true
-    }
-  },
-  tests: './*_test.js',
-  name: 'Codecept-Sample'
+    },
+    allure: {
+      enabled: true
+    },
+    tests: './*_test.js',
+    name: 'Codecept-Sample'
+  }
 }

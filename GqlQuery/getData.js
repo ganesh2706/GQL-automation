@@ -1,36 +1,35 @@
 module.exports = {
     getData: {
-        query: `
-        query getData(limit: ${1},skip : ${200}){
+        validQuery: `
+        query getData(limit: 1,skip : 200){
             name
             originalId
             email
         }`,
         invalidLimit: `
-        query getData(limit : ${-1},skip : ${200}){
+        query getData(limit : "1",skip : 200){
             name
             originalId
             email
         }`,
         invalidSkip: `
-        query getData(limit : ${100},skip : ${-1}){
+        query getData(limit : 100,skip : "1"){
             name
             originalId
             email
         }`,
-        // token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNmQ2NTNiYTA4YzE5MDA1MjM1ZWE1MiIsImlhdCI6MTU4MDgwMjYwNn0.kvkvcHo7T3Xif7jSId0psmSBn-5ThsN1lrpvhTdUP8A'
-        // linitIsBlank: `
-        // query getData(limit: ,skip : 200){
-        //     name
-        //     originalId
-        //     email
-        // }`,
-        // skipIsBlank: `
-        // query getData(limit:100,skip ){
-        //     name
-        //     originalId
-        //     email
-        // }`
+        linitIsBlank: `
+        query getData(limit:"",skip : 200){
+            name
+            originalId
+            email
+        }`,
+        skipIsBlank: `
+        query getData(limit:100,skip:"" ){
+            name
+            originalId
+            email
+        }`
     },
 
     headers: {

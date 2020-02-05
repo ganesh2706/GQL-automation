@@ -1,0 +1,38 @@
+Feature: Allow user to create user account
+
+    Scenario: User create account with valid details
+        When User hitting create user endpoint with valid details
+        Then User should get success message
+
+    Scenario: To check user enters valid email address
+        When User hitting create user endpoint with valid email address
+        Then User should get ok response
+
+    Scenario: To check user enters valid password
+        When User hitting create user endpoint valid password
+        Then User should get ok response
+
+    Scenario: To check user enters invalid password
+        When User hitting create user endpoint with invalid password
+        Then User should get error response
+
+
+    Scenario: User create account with invalid email address details
+        When User hitting create user endpoint with invalid email address
+        Then User should get error message with invalid email
+
+    Scenario: To check user should enter mobile number
+        When User hitting facebook account by enter mobile number
+        Then User should get ok response status
+
+    Scenario: To check user should not enter invalid mobile number
+        When User hitting facebook account by entering invalid mobile number
+        Then User should get error response
+
+    Scenario: To check that user is already exist or not
+        When User hitting facebook endpoint
+        When User is enter email
+        When User get already exist message
+        Then User should get error message
+
+
